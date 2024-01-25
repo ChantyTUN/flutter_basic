@@ -10,7 +10,7 @@ void main(){
         appBar: AppBar(
           title: const Text("Cambodia first flutter"),
         ),
-        body: Category(),
+        body: Home(),
       ),
     )
   );

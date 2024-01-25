@@ -12,23 +12,9 @@ class Home extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(5.0, 2.0, 5.0, 2.0),
         child: Container(
-          height: 150.0,
-
-          child: Column(
-            children: [
-              Container(
-
-                color: Colors.red,
-              ),
-              Container(
-
-                color: Colors.blueAccent,
-              ),
-            ],
-          )
-        ),
-
-
+            height: 150.0,
+            color: Colors.lightBlue,
+        )
       ),
     );
   }
