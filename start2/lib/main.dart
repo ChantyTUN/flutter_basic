@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:start2/page/category.dart';
+import 'package:start2/page/home.dart';
 
 void main(){
   runApp(
@@ -6,25 +8,12 @@ void main(){
       title: "My first Flutter App",
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("first flutter"),
+          title: const Text("Cambodia first flutter"),
         ),
-        body: Center(
-          child: Container(
-            width: 200.0,
-            height: 100.0,
-            color: Colors.black,
-            child: Center(
-                child: Text(
-                    "Welcome",
-                  style: TextStyle(
-                    color:  Colors.white,
-                    fontSize: 20.0,
-                  ) ,
-                ),
-            ),
-          ),
-        ),
-      )
+        body: Category(),
+      ),
     )
   );
 }
+
+
