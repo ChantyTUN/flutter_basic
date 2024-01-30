@@ -9,27 +9,21 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(5.0, 2.0, 5.0, 2.0),
-        child: Container(
-          height: 150.0,
-
-          child: Column(
-            children: [
-              Container(
-
-                color: Colors.red,
-              ),
-              Container(
-
-                color: Colors.blueAccent,
-              ),
-            ],
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 220.0,
+            color: Colors.yellow,
+            child: Image(
+                image: AssetImage(
+                    "images/1.jpg"
+                ),
+              fit: BoxFit.cover,
+            ),
           )
-        ),
-
-
-      ),
+        ],
+      )
     );
   }
 }
