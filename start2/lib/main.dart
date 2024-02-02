@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:start2/page/category.dart';
 import 'package:start2/page/home.dart';
 import 'package:start2/page/page1.dart';
+import 'package:start2/page/page11.dart';
 
 void main(){
   runApp(
@@ -12,7 +13,7 @@ void main(){
         appBar: AppBar(
           title: const Text("Cambodia first flutter"),
         ),
-        body: Page1(),
+        body: Page11(),
       ),
     )
   );
