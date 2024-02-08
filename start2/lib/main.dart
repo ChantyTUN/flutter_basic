@@ -4,13 +4,14 @@ import 'package:start2/page/home.dart';
 import 'package:start2/page/page1.dart';
 import 'package:start2/page/page11.dart';
 import 'package:start2/page/page2.dart';
+import 'package:start2/page/page3.dart';
 
 void main(){
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "My first Flutter App",
-      home: Page2(),
+      home: Page3(),
     )
   );
 }
