@@ -1,7 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:start2/page/page8_detail.dart';
+import 'package:start2/api/source.dart';
+
 class Page8 extends StatefulWidget {
   const Page8({super.key});
 
@@ -10,7 +12,6 @@ class Page8 extends StatefulWidget {
 }
 
 class _Page8State extends State<Page8> {
-  var myData;
   var numData=0;
   var url = "http://chey7.com/app/app-1/rean-web-admin/api/get-city-list.php?s=0&e=16";
   void getDate() async {
@@ -39,7 +40,12 @@ class _Page8State extends State<Page8> {
           itemBuilder: (BuildContext context, int i){
             return InkWell(
               onTap: (){
-                print(i);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Page8_detail(id:i),
+                    )
+                );
               },
               child: Container(
                 margin: EdgeInsets.only(bottom: 10.0),
