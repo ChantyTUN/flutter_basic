@@ -3,6 +3,7 @@ import 'package:start2/page/Page9.dart';
 import 'package:start2/page/category.dart';
 import 'package:start2/page/home.dart';
 import 'package:start2/page/page1.dart';
+import 'package:start2/page/page10.dart';
 import 'package:start2/page/page11.dart';
 import 'package:start2/page/page2.dart';
 import 'package:start2/page/page3.dart';
@@ -17,7 +18,7 @@ void main(){
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "My first Flutter App",
-      home: Page9(),
+      home: Page10(),
     )
   );
 }
