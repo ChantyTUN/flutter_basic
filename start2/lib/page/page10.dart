@@ -32,12 +32,29 @@ class _Page10State extends State<Page10> {
             future: getData(),
             builder: (BuildContext context, AsyncSnapshot<List> snapshot){
               if(snapshot.hasData){
-                return Center(
-                  child: Text("Has Data"),
+                return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (BuildContext context, int ind){
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 10.0),
+                        alignment: Alignment.center,
+                        height: 150.0,
+                        color: Colors.red,
+                        child: Text(
+                          snapshot.data![ind]['name'],
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            color: Colors.white
+                          ),
+                        ),
+                      );
+                    }
                 );
               }
               return Center(
-                child: Text("Loading...."),
+                child: CircularProgressIndicator(
+
+                ),
               );
             }
           )
