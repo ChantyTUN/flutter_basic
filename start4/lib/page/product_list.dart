@@ -10,26 +10,21 @@ class ProductList extends StatefulWidget {
 
 class _ProductListState extends State<ProductList> {
   var url = "https://chey7.com/app/app-1/rean-web-admin/api/get-product-list.php";
-  // Future<List> getProduct() async{
-  //   var resp = await http.get(Uri.parse(url));
-  //   if(resp.statusCode == 200){
-  //     var myData = jsonDecode(resp.body);
-  //   }
-  // }
 
-  void getData() async{
+  Future<List> getProduct() async{
+      var myData;
       var resp = await http.get(Uri.parse(url));
       if(resp.statusCode == 200){
-        var myData = jsonDecode(resp.body);
-        print(myData);
+        myData = jsonDecode(resp.body);
       }
+      return myData;
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getData();
+    // getData();
   }
 
   @override
@@ -44,8 +39,39 @@ class _ProductListState extends State<ProductList> {
         ),
         backgroundColor: Colors.black,
       ),
-      body: Center(
-        child: Text("ABC"),
+      body: FutureBuilder<List>(
+        future: getProduct(),
+        builder: (BuildContext context, AsyncSnapshot<List> snap){
+           if(snap.hasData){
+             return ListView.builder(
+                  padding: EdgeInsets.all(5.0),
+                  itemCount: snap.data!.length,
+                 itemBuilder: (BuildContext context, int ind){
+                    return Container(
+                      margin: EdgeInsets.only(bottom: 5.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      height: 150.0,
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: Text("AA"),
+                          ),
+                          Expanded(
+                              child: Text("BB"),
+                          ),
+                        ],
+                      )
+                    );
+                 },
+             );
+           }
+           return Center(
+             child: Text("Loading..."),
+           );
+        },
       ),
     );
 
