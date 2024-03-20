@@ -2,8 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:get/get.dart';
+import 'package:project_sample/screens/main_screen.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
 }
 
@@ -33,6 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    // whenever your initialization is completed, remove the splash screen:
+    FlutterNativeSplash.remove();
     super.initState();
     Connectivity().onConnectivityChanged.listen((event) {
       _connectivityStream.add(event);
@@ -48,29 +55,39 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.hasData) {
             final result = snapshot.data!;
             if (result == ConnectivityResult.mobile) {
-              return const Center(
-                child: Text(
-                  "Mobile",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              );
+              return MainScreen();
+              // return const Center(
+              //   child: Text(
+              //     "Mobile",
+              //     style: TextStyle(
+              //       color: Colors.black,
+              //     ),
+              //   ),
+              // );
             } else if (result == ConnectivityResult.wifi) {
-              return const Center(
-                child: Text(
-                  "WIFI",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
+              return MainScreen();
+              // return const Center(
+              //   child: Text(
+              //     "WIFI",
+              //     style: TextStyle(
+              //       color: Colors.black,
+              //     ),
+              //   ),
+              // );
+            }else{
+              return Image.asset(
+                "assets/images/1_No_Connection.png",
+                // height: Get.height,
+                fit: BoxFit.cover,
               );
             }
+          }else {
+            //Handle the case when snapshot has no data or connectivity is other than mobile or wifi
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
-          // Handle the case when snapshot has no data or connectivity is other than mobile or wifi
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+
         },
       ),
     );
